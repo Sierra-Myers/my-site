@@ -1,3 +1,15 @@
+---
+navPages:
+  - title: Home
+    url: /index.html
+  - title: Menu
+    url: /menu
+  - title: About
+    url: /about
+  - title: Contact
+    url: /contact
+---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,13 +22,14 @@
     <div class="header">
         <nav>
             <ul>
-                <li><a href="/index.html">Home</a></li>
-                <li><a href="/menu">Menu</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/contact">Contact</a></li>
-                
+              {% for entry in navPages %}
+                <li {% if entry.title == title %}class="selected" {% endif %}>
+                  <a href="{{ entry.url }}">{{ entry.title }}</a>
+                </li>
+              {% endfor %}
             </ul>
-            </nav>
+          </nav>
+          
             <ul class="social-icons">
                 <li>
                 <a href="http://instagram.com/Sierra'scoffee">
@@ -48,6 +61,7 @@
     </div>
     
     <main>
+        <h1>{{ title }}</h1>
         {{ content }}
     </main>
 
